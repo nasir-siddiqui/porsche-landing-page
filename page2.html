@@ -1,0 +1,2196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- ==========================================
+        Porsche 911 Luxury Landing Page
+        File: index.html
+    =========================================== -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Porsche 911 | Engineered for Pure Emotion</title>
+
+    <meta name="description"
+        content="Experience timeless design, breathtaking performance and uncompromising luxury.">
+
+    <meta name="theme-color" content="#0A0A0A">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <style>
+/*=========================================================
+    Porsche 911 Luxury Landing Page
+    File: style.css
+    Part 2A
+==========================================================*/
+
+/*==============================
+    CSS VARIABLES
+==============================*/
+
+:root{
+
+    --bg:#0A0A0A;
+    --surface:#111111;
+    --surface-2:#181818;
+
+    --primary:#009B77;
+    --primary-light:#18c49b;
+
+    --white:#ffffff;
+    --text:#CFCFCF;
+    --gray:#8b8b8b;
+
+    --border:rgba(255,255,255,.08);
+    --glass:rgba(255,255,255,.08);
+
+    --shadow:0 30px 80px rgba(0,0,0,.35);
+
+    --radius:18px;
+
+    --transition:.45s cubic-bezier(.2,.8,.2,1);
+
+    --max-width:1280px;
+
+}
+
+/*==============================
+    RESET
+==============================*/
+
+*,
+*::before,
+*::after{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    background:var(--bg);
+
+    color:var(--white);
+
+    font-family:"Manrope",sans-serif;
+
+    overflow-x:hidden;
+
+    line-height:1.6;
+
+    -webkit-font-smoothing:antialiased;
+
+}
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+button{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font:inherit;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+section{
+
+    position:relative;
+
+}
+
+.container{
+
+    width:min(92%,var(--max-width));
+
+    margin:auto;
+
+}
+
+/*==============================
+    SCROLLBAR
+==============================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#050505;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:30px;
+
+}
+
+/*==============================
+    PROGRESS BAR
+==============================*/
+
+.scroll-progress{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    height:3px;
+
+    width:0;
+
+    background:var(--primary);
+
+    z-index:9999;
+
+}
+
+/*==============================
+    HEADER
+==============================*/
+
+.header{
+
+    position:fixed;
+
+    width:100%;
+
+    top:0;
+
+    left:0;
+
+    z-index:999;
+
+    transition:var(--transition);
+
+}
+
+.header.scrolled{
+
+    backdrop-filter:blur(16px);
+
+    background:rgba(8,8,8,.45);
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+.nav-container{
+
+    height:86px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+/*==============================
+    LOGO
+==============================*/
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:.95rem;
+
+    letter-spacing:4px;
+
+    font-weight:700;
+
+}
+
+.logo-mark{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    box-shadow:
+
+    0 0 18px rgba(0,155,119,.7);
+
+}
+
+/*==============================
+    NAVIGATION
+==============================*/
+
+.nav-links{
+
+    display:flex;
+
+    gap:48px;
+
+}
+
+.nav-links a{
+
+    color:#f3f3f3;
+
+    font-size:.92rem;
+
+    letter-spacing:1px;
+
+    transition:var(--transition);
+
+    position:relative;
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--primary);
+
+    transition:var(--transition);
+
+}
+
+.nav-links a:hover{
+
+    color:var(--white);
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+/*==============================
+    MOBILE TOGGLE
+==============================*/
+
+.menu-toggle{
+
+    display:none;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+.menu-toggle span{
+
+    width:24px;
+
+    height:2px;
+
+    background:#fff;
+
+}
+
+/*==============================
+    MOBILE MENU
+==============================*/
+
+.mobile-menu{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#0A0A0A;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transform:translateY(-100%);
+
+    transition:.45s;
+
+    z-index:998;
+
+}
+
+.mobile-menu.active{
+
+    transform:translateY(0);
+
+}
+
+.mobile-menu nav{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+.mobile-menu a{
+
+    font-size:2rem;
+
+    font-weight:600;
+
+}
+
+/*==============================
+    HERO
+==============================*/
+
+.hero{
+
+    height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+/*==============================
+    VIDEO
+==============================*/
+
+.hero-video{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:-3;
+
+}
+
+/*==============================
+    OVERLAYS
+==============================*/
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+
+        90deg,
+
+        rgba(0,0,0,.72),
+
+        rgba(0,0,0,.42),
+
+        rgba(0,0,0,.28)
+
+    );
+
+    z-index:-2;
+
+}
+
+.hero-gradient{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(
+
+        circle at 80% 20%,
+
+        rgba(0,155,119,.14),
+
+        transparent 45%
+
+    );
+
+    z-index:-1;
+
+}
+
+/*==============================
+    HERO CONTENT
+==============================*/
+
+.hero-container{
+
+    display:flex;
+
+    align-items:center;
+
+    height:100%;
+
+}
+
+.hero-content{
+
+    max-width:640px;
+
+    animation:fadeUp 1.2s ease;
+
+}
+
+.hero-label{
+
+    display:inline-block;
+
+    color:var(--primary);
+
+    letter-spacing:4px;
+
+    font-size:.82rem;
+
+    margin-bottom:22px;
+
+    font-weight:700;
+
+}
+
+.hero h1{
+
+    font-size:clamp(3.2rem,8vw,6.5rem);
+
+    line-height:.95;
+
+    letter-spacing:-3px;
+
+    font-weight:800;
+
+    margin-bottom:30px;
+
+}
+
+.hero p{
+
+    max-width:520px;
+
+    color:var(--text);
+
+    font-size:1.15rem;
+
+    margin-bottom:50px;
+
+}
+
+/*==============================
+    BUTTONS
+==============================*/
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn{
+
+    padding:16px 34px;
+
+    border-radius:999px;
+
+    transition:var(--transition);
+
+    font-weight:600;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-5px);
+
+    background:var(--primary-light);
+
+    box-shadow:
+
+    0 15px 35px rgba(0,155,119,.35);
+
+}
+
+.btn-secondary{
+
+    border:1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:blur(12px);
+
+    color:#fff;
+
+}
+
+.btn-secondary:hover{
+
+    background:rgba(255,255,255,.08);
+
+    transform:translateY(-5px);
+
+}
+
+/*==============================
+    SCROLL INDICATOR
+==============================*/
+
+.scroll-indicator{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:40px;
+
+    transform:translateX(-50%);
+
+}
+
+.scroll-indicator span{
+
+    display:block;
+
+    width:2px;
+
+    height:70px;
+
+    background:linear-gradient(
+
+        transparent,
+
+        var(--primary),
+
+        transparent
+
+    );
+
+    animation:scrollLine 2.4s infinite;
+
+}
+
+/*==============================
+    BACK TO TOP
+==============================*/
+
+.back-top{
+
+    position:fixed;
+
+    right:30px;
+
+    bottom:30px;
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:#fff;
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:var(--transition);
+
+    z-index:500;
+
+}
+
+.back-top.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.back-top:hover{
+
+    background:var(--primary);
+
+    transform:translateY(-5px);
+
+}
+
+/*=========================================================
+    Porsche 911 Luxury Landing Page
+    File: style.css
+    Part 2B
+==========================================================*/
+
+/*==============================
+    SECTION LAYOUT
+==============================*/
+
+.section{
+
+    padding:140px 0;
+
+    position:relative;
+
+}
+
+.dark-section{
+
+    background:linear-gradient(
+        180deg,
+        #111111 0%,
+        #0A0A0A 100%
+    );
+
+}
+
+.section-header{
+
+    max-width:760px;
+
+    margin:0 auto 90px;
+
+    text-align:center;
+
+}
+
+.section-label{
+
+    display:inline-block;
+
+    color:var(--primary);
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    font-size:.8rem;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+.section-header h2{
+
+    font-size:clamp(2.3rem,5vw,4rem);
+
+    line-height:1.1;
+
+    letter-spacing:-1.5px;
+
+    margin-bottom:24px;
+
+}
+
+.section-header p{
+
+    color:var(--text);
+
+    font-size:1.05rem;
+
+    max-width:620px;
+
+    margin:auto;
+
+}
+
+/*==============================
+    FEATURE GRID
+==============================*/
+
+.feature-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:32px;
+
+}
+
+.glass-card{
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:var(--radius);
+
+    backdrop-filter:blur(18px);
+
+    padding:48px 40px;
+
+    transition:var(--transition);
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.glass-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.08),
+        transparent
+    );
+
+    opacity:0;
+
+    transition:var(--transition);
+
+}
+
+.glass-card:hover{
+
+    transform:translateY(-12px);
+
+    border-color:rgba(0,155,119,.35);
+
+    box-shadow:0 35px 80px rgba(0,0,0,.35);
+
+}
+
+.glass-card:hover::before{
+
+    opacity:1;
+
+}
+
+.card-number{
+
+    display:inline-flex;
+
+    width:52px;
+
+    height:52px;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(0,155,119,.15);
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    margin-bottom:28px;
+
+}
+
+.glass-card h3{
+
+    font-size:1.6rem;
+
+    margin-bottom:18px;
+
+}
+
+.glass-card p{
+
+    color:var(--text);
+
+    line-height:1.8;
+
+}
+
+/*==============================
+    PERFORMANCE
+==============================*/
+
+.performance-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:32px;
+
+}
+
+.stat{
+
+    text-align:center;
+
+    padding:70px 30px;
+
+    background:rgba(255,255,255,.03);
+
+    border-radius:var(--radius);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:var(--transition);
+
+}
+
+.stat:hover{
+
+    transform:translateY(-10px);
+
+    border-color:rgba(0,155,119,.3);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+
+}
+
+.stat h3{
+
+    font-size:3.4rem;
+
+    color:var(--primary);
+
+    margin-bottom:12px;
+
+    letter-spacing:-2px;
+
+}
+
+.stat span{
+
+    color:var(--text);
+
+    letter-spacing:1px;
+
+}
+
+/*==============================
+    GALLERY
+==============================*/
+
+.gallery-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:28px;
+
+}
+
+.gallery-grid img{
+
+    width:100%;
+
+    height:540px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    transition:var(--transition);
+
+    cursor:pointer;
+
+}
+
+.gallery-grid img:hover{
+
+    transform:scale(1.04);
+
+    filter:brightness(1.08);
+
+}
+
+/*==============================
+    FOOTER
+==============================*/
+
+footer{
+
+    padding:70px 0;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    background:#090909;
+
+}
+
+.footer-content{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:40px;
+
+    flex-wrap:wrap;
+
+}
+
+.footer-content h3{
+
+    letter-spacing:4px;
+
+    font-size:1.2rem;
+
+    margin-bottom:10px;
+
+}
+
+.footer-content p{
+
+    color:var(--text);
+
+}
+
+/*==============================
+    REVEAL ANIMATION
+==============================*/
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(60px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/*==============================
+    HOVER TRANSITIONS
+==============================*/
+
+a,
+button,
+img,
+.glass-card,
+.stat{
+
+    will-change:transform;
+
+}
+
+/*==============================
+    RESPONSIVE
+==============================*/
+
+@media(max-width:1100px){
+
+    .feature-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .performance-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .gallery-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .gallery-grid img{
+
+        height:460px;
+
+    }
+
+}
+
+/*==============================
+    TABLET
+==============================*/
+
+@media(max-width:900px){
+
+    .nav-links{
+
+        display:none;
+
+    }
+
+    .menu-toggle{
+
+        display:flex;
+
+    }
+
+    .hero{
+
+        text-align:center;
+
+    }
+
+    .hero-container{
+
+        justify-content:center;
+
+    }
+
+    .hero-content{
+
+        max-width:680px;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+    }
+
+    .section{
+
+        padding:100px 0;
+
+    }
+
+}
+
+/*==============================
+    MOBILE
+==============================*/
+
+@media(max-width:600px){
+
+    .hero h1{
+
+        font-size:3rem;
+
+        letter-spacing:-1px;
+
+    }
+
+    .hero p{
+
+        font-size:1rem;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    .glass-card{
+
+        padding:34px 28px;
+
+    }
+
+    .stat{
+
+        padding:45px 20px;
+
+    }
+
+    .stat h3{
+
+        font-size:2.5rem;
+
+    }
+
+    .gallery-grid img{
+
+        height:320px;
+
+    }
+
+    .footer-content{
+
+        text-align:center;
+
+        justify-content:center;
+
+    }
+
+    .back-top{
+
+        right:18px;
+
+        bottom:18px;
+
+    }
+
+}
+
+/*==============================
+    LARGE SCREENS
+==============================*/
+
+@media(min-width:1600px){
+
+    .container{
+
+        max-width:1450px;
+
+    }
+
+    .hero h1{
+
+        font-size:7rem;
+
+    }
+
+}
+
+/*==============================
+    KEYFRAMES
+==============================*/
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes scrollLine{
+
+    0%{
+
+        opacity:0;
+
+        transform:translateY(-12px);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+}
+
+/*==============================
+    SELECTION
+==============================*/
+
+::selection{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+/*==============================
+    FOCUS ACCESSIBILITY
+==============================*/
+
+a:focus-visible,
+button:focus-visible{
+
+    outline:2px solid var(--primary);
+
+    outline-offset:4px;
+
+}
+</style>
+</head>
+
+<body>
+
+    <!-- ==========================================
+        Scroll Progress
+    =========================================== -->
+
+    <div class="scroll-progress"></div>
+
+    <!-- ==========================================
+        Header
+    =========================================== -->
+
+    <header class="header" id="header">
+
+        <div class="container nav-container">
+
+            <a href="#" class="logo" aria-label="Porsche Home">
+
+                <span class="logo-mark"></span>
+
+                PORSCHE
+
+            </a>
+
+            <nav aria-label="Primary Navigation">
+
+                <ul class="nav-links">
+
+                    <li>
+                        <a href="#featured">
+                            Models
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#performance">
+                            Performance
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#gallery">
+                            Gallery
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#footer">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <!-- Mobile -->
+
+            <button class="menu-toggle"
+                aria-label="Open Menu"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <!-- ==========================================
+        Mobile Navigation
+    =========================================== -->
+
+    <aside class="mobile-menu">
+
+        <nav>
+
+            <a href="#featured">Models</a>
+
+            <a href="#performance">Performance</a>
+
+            <a href="#gallery">Gallery</a>
+
+            <a href="#footer">Contact</a>
+
+        </nav>
+
+    </aside>
+
+    <!-- ==========================================
+        HERO
+    =========================================== -->
+
+    <main>
+
+        <section class="hero" id="hero">
+
+            <!-- Background Video -->
+
+            <video class="hero-video"
+                autoplay
+                muted
+                loop
+                playsinline>
+
+                <source src="https://youtu.be/0s4chAWaIWg?si=7ynkRlsz3tRtBBij"
+                    type="video/mp4">
+
+            </video>
+
+            <!-- Overlay -->
+
+            <div class="hero-overlay"></div>
+
+            <!-- Decorative Gradient -->
+
+            <div class="hero-gradient"></div>
+
+            <!-- Hero Content -->
+
+            <div class="container hero-container">
+
+                <div class="hero-content">
+
+                    <span class="hero-label">
+
+                        PORSCHE 911
+
+                    </span>
+
+                    <h1>
+
+                        Engineered for
+                        <br>
+                        Pure Emotion.
+
+                    </h1>
+
+                    <p>
+
+                        Experience timeless design,
+                        breathtaking performance,
+                        and uncompromising luxury.
+
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#featured"
+                            class="btn btn-primary">
+
+                            Explore Model
+
+                            <span>→</span>
+
+                        </a>
+
+                        <a href="#gallery"
+                            class="btn btn-secondary">
+
+                            Watch Story
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Scroll Indicator -->
+
+            <div class="scroll-indicator">
+
+                <span></span>
+
+            </div>
+
+        </section>
+
+        <!-- ======================================
+            Featured Model
+        ======================================= -->
+
+        <section
+            id="featured"
+            class="section">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+
+                        FEATURED MODEL
+
+                    </span>
+
+                    <h2>
+
+                        Timeless Design.
+
+                    </h2>
+
+                    <p>
+
+                        Every contour is carefully sculpted
+                        to blend elegance,
+                        precision and performance into
+                        an unmistakable silhouette.
+
+                    </p>
+
+                </div>
+
+                <div class="feature-grid">
+
+                    <article class="glass-card">
+
+                        <span class="card-number">
+
+                            01
+
+                        </span>
+
+                        <h3>
+
+                            Iconic Shape
+
+                        </h3>
+
+                        <p>
+
+                            The unmistakable silhouette
+                            refined through generations.
+
+                        </p>
+
+                    </article>
+
+                    <article class="glass-card">
+
+                        <span class="card-number">
+
+                            02
+
+                        </span>
+
+                        <h3>
+
+                            Premium Interior
+
+                        </h3>
+
+                        <p>
+
+                            Every surface crafted for
+                            exceptional comfort and luxury.
+
+                        </p>
+
+                    </article>
+
+                    <article class="glass-card">
+
+                        <span class="card-number">
+
+                            03
+
+                        </span>
+
+                        <h3>
+
+                            Precision Engineering
+
+                        </h3>
+
+                        <p>
+
+                            Built for drivers who demand
+                            excellence without compromise.
+
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================================
+            Performance
+        ======================================= -->
+
+        <section
+            id="performance"
+            class="section dark-section">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+
+                        PERFORMANCE
+
+                    </span>
+
+                    <h2>
+
+                        Crafted for the Road.
+
+                    </h2>
+
+                    <p>
+
+                        Every component exists for one
+                        purpose—delivering an unforgettable
+                        driving experience.
+
+                    </p>
+
+                </div>
+
+                <div class="performance-grid">
+
+                    <div class="stat">
+
+                        <h3>
+
+                            3.2s
+
+                        </h3>
+
+                        <span>
+
+                            0–100 km/h
+
+                        </span>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <h3>
+
+                            385 HP
+
+                        </h3>
+
+                        <span>
+
+                            Twin Turbo Power
+
+                        </span>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <h3>
+
+                            293 km/h
+
+                        </h3>
+
+                        <span>
+
+                            Top Speed
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ======================================
+            Gallery Preview
+        ======================================= -->
+
+        <section
+            id="gallery"
+            class="section">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+
+                        GALLERY
+
+                    </span>
+
+                    <h2>
+
+                        Every Angle Speaks Luxury.
+
+                    </h2>
+
+                </div>
+
+                <div class="gallery-grid">
+
+                    <img
+                        src="assets/images/gallery-1.jpg"
+                        alt="Emerald Green Porsche"
+                        loading="lazy">
+
+                    <img
+                        src="assets/images/gallery-2.jpg"
+                        alt="Luxury Interior"
+                        loading="lazy">
+
+                    <img
+                        src="assets/images/gallery-3.jpg"
+                        alt="Porsche Side Profile"
+                        loading="lazy">
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+        Footer
+    =========================================== -->
+
+    <footer
+        id="footer">
+
+        <div class="container footer-content">
+
+            <div>
+
+                <h3>
+
+                    PORSCHE
+
+                </h3>
+
+                <p>
+
+                    Engineered for Pure Emotion.
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <p>
+
+                    © 2026 Luxury Automotive Concept
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- Back To Top -->
+
+    <button
+        class="back-top"
+        aria-label="Back to top">
+
+        ↑
+
+    </button>
+
+    <!-- JavaScript -->
+
+    <script>
+/*=========================================================
+    Porsche 911 Luxury Landing Page
+    File: script.js
+==========================================================*/
+
+"use strict";
+
+/*=========================================================
+    SELECTORS
+==========================================================*/
+
+const header = document.getElementById("header");
+const progressBar = document.querySelector(".scroll-progress");
+const backTop = document.querySelector(".back-top");
+
+const menuToggle = document.querySelector(".menu-toggle");
+const mobileMenu = document.querySelector(".mobile-menu");
+
+const hero = document.querySelector(".hero");
+const heroContent = document.querySelector(".hero-content");
+
+const navLinks = document.querySelectorAll(".nav-links a");
+const mobileLinks = document.querySelectorAll(".mobile-menu a");
+
+const sections = document.querySelectorAll("section");
+
+/*=========================================================
+    REVEAL ELEMENTS
+==========================================================*/
+
+const revealElements = document.querySelectorAll(
+    ".section-header, .glass-card, .stat, .gallery-grid img"
+);
+
+revealElements.forEach((el) => {
+    el.classList.add("reveal");
+});
+
+/*=========================================================
+    NAVBAR + SCROLL PROGRESS
+==========================================================*/
+
+let latestScroll = 0;
+let ticking = false;
+
+function updateOnScroll() {
+
+    const scrollY = latestScroll;
+
+    /* Navbar Blur */
+
+    if (scrollY > 60) {
+
+        header.classList.add("scrolled");
+
+    } else {
+
+        header.classList.remove("scrolled");
+
+    }
+
+    /* Scroll Progress */
+
+    const pageHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+    const progress = (scrollY / pageHeight) * 100;
+
+    progressBar.style.width = progress + "%";
+
+    /* Back To Top */
+
+    if (scrollY > 500) {
+
+        backTop.classList.add("show");
+
+    } else {
+
+        backTop.classList.remove("show");
+
+    }
+
+    ticking = false;
+
+}
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        latestScroll = window.scrollY;
+
+        if (!ticking) {
+
+            requestAnimationFrame(updateOnScroll);
+
+            ticking = true;
+
+        }
+
+    },
+    { passive: true }
+);
+
+/*=========================================================
+    BACK TO TOP
+==========================================================*/
+
+backTop.addEventListener("click", () => {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+});
+
+/*=========================================================
+    MOBILE MENU
+==========================================================*/
+
+menuToggle.addEventListener("click", () => {
+
+    menuToggle.classList.toggle("active");
+
+    mobileMenu.classList.toggle("active");
+
+    document.body.classList.toggle("menu-open");
+
+    const expanded =
+        menuToggle.getAttribute("aria-expanded") === "true";
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        !expanded
+    );
+
+});
+
+/* Close Menu */
+
+mobileLinks.forEach((link) => {
+
+    link.addEventListener("click", () => {
+
+        mobileMenu.classList.remove("active");
+
+        menuToggle.classList.remove("active");
+
+        document.body.classList.remove("menu-open");
+
+        menuToggle.setAttribute("aria-expanded", "false");
+
+    });
+
+});
+
+/*=========================================================
+    REVEAL ON SCROLL
+==========================================================*/
+
+const observer = new IntersectionObserver(
+
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("active");
+
+            }
+
+        });
+
+    },
+
+    {
+
+        threshold: 0.15
+
+    }
+
+);
+
+revealElements.forEach((el) => {
+
+    observer.observe(el);
+
+});
+
+/*=========================================================
+    HERO PARALLAX
+==========================================================*/
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const y = window.scrollY;
+
+        if (heroContent) {
+
+            heroContent.style.transform =
+                `translateY(${y * 0.18}px)`;
+
+        }
+
+    },
+    { passive: true }
+);
+
+/*=========================================================
+    ACTIVE NAVIGATION
+==========================================================*/
+
+const sectionObserver = new IntersectionObserver(
+
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (!entry.isIntersecting) return;
+
+            const id = entry.target.getAttribute("id");
+
+            navLinks.forEach((link) => {
+
+                link.classList.remove("active");
+
+                if (link.getAttribute("href") === "#" + id) {
+
+                    link.classList.add("active");
+
+                }
+
+            });
+
+        });
+
+    },
+
+    {
+
+        threshold: 0.6
+
+    }
+
+);
+
+sections.forEach((section) => {
+
+    sectionObserver.observe(section);
+
+});
+
+/*=========================================================
+    SMOOTH ANCHOR LINKS
+==========================================================*/
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+
+    anchor.addEventListener("click", function (e) {
+
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
+
+        if (!target) return;
+
+        e.preventDefault();
+
+        target.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
+    });
+
+});
+
+/*=========================================================
+    HERO VIDEO PLAYBACK
+==========================================================*/
+
+const heroVideo = document.querySelector(".hero-video");
+
+if (heroVideo) {
+
+    heroVideo.play().catch(() => {
+
+        console.log("Autoplay prevented by browser.");
+
+    });
+
+}
+
+/*=========================================================
+    SUBTLE MOUSE PARALLAX
+==========================================================*/
+
+if (hero) {
+
+    hero.addEventListener("mousemove", (e) => {
+
+        const x =
+            (e.clientX / window.innerWidth - 0.5) * 20;
+
+        const y =
+            (e.clientY / window.innerHeight - 0.5) * 20;
+
+        heroContent.style.transform =
+            `translate(${x}px, ${y}px)`;
+
+    });
+
+    hero.addEventListener("mouseleave", () => {
+
+        heroContent.style.transform =
+            "translate(0px,0px)";
+
+    });
+
+}
+
+/*=========================================================
+    IMAGE HOVER EFFECT
+==========================================================*/
+
+document.querySelectorAll(".gallery-grid img").forEach((img) => {
+
+    img.addEventListener("mouseenter", () => {
+
+        img.style.transition = "transform .6s ease";
+
+    });
+
+});
+
+/*=========================================================
+    PRELOADER FADE (Optional)
+==========================================================*/
+
+window.addEventListener("load", () => {
+
+    document.body.classList.add("loaded");
+
+});
+
+/*=========================================================
+    CONSOLE SIGNATURE
+==========================================================*/
+
+console.log(
+    "%cPorsche 911 Landing Page",
+    "color:#009B77;font-size:18px;font-weight:bold;"
+);
+
+console.log(
+    "%cDesigned with HTML, CSS & Vanilla JavaScript",
+    "color:white;font-size:12px;"
+);
+
+</script>
+
+</body>
+
+</html>
